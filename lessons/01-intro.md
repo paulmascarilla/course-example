@@ -2,20 +2,30 @@
 title: "Introduction to Docker"
 ---
 
-# Introduction to Docker
+# <span class="rainbow">Introduction to Docker 🎉</span>
 
-Docker is a platform for developing, shipping, and running applications inside containers. Containers are lightweight, portable, and self-sufficient units that include everything needed to run a piece of software.
+<span class="spotlight">Docker is a platform for developing, shipping, and running applications inside containers.</span> Containers are lightweight, portable, and self-sufficient units that include everything needed to run a piece of software.
 
-## What is a Container?
+---
+
+## <span class="blink">✨ What is a Container?</span>
 
 A container is a standardized unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another.
 
+> **Fun fact:** Containers have been around since the 1970s (chroot), but Docker made them popular in 2013!
+
+---
+
 ## Benefits of Docker
+
+<div class="pulse-glow" style="padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
 
 - **Consistency**: Same environment from development to production
 - **Isolation**: Applications run in isolated environments
 - **Portability**: Run anywhere Docker is installed
 - **Efficiency**: Lightweight compared to virtual machines
+
+</div>
 
 ## Installing Docker
 
@@ -37,6 +47,6 @@ docker --version
 docker run hello-world
 ```
 
-## Next Steps
+---
 
-In the next lesson, we'll explore Docker images and containers in depth.
+<span class="rainbow">🎯 Congratulations on completing the first lesson!</span>
