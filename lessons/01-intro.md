@@ -49,4 +49,6 @@ docker run hello-world
 
 ---
 
+<div data-explode style="height: 1px;"></div>
+
 <span class="rainbow">🎯 Congratulations on completing the first lesson!</span>

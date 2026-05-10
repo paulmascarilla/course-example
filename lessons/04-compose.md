@@ -91,3 +91,7 @@ Docker Compose simplifies:
 </div>
 
 <span class="spotlight">🎉 You completed the course! Amazing work!</span>
+
+<div data-explode style="height: 1px;"></div>
+
+<span class="rainbow">✨ Félicitations ! 🎉</span>
