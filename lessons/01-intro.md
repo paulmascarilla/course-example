@@ -1,7 +1,3 @@
----
-title: "Introduction to Docker"
----
-
 # <span class="rainbow">Introduction to Docker 🎉</span>
 
 <span class="spotlight">Docker is a platform for developing, shipping, and running applications inside containers.</span> Containers are lightweight, portable, and self-sufficient units that include everything needed to run a piece of software.
