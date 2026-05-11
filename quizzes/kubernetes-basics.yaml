@@ -5,7 +5,7 @@ version: "1.0.0"
 covers:
   - course: kubernetes-basics
     modules:
-      - "What is Kubernetes"
+      - "What is Kubernetes ???"
       - "Pods and Containers"
 passing_score: 80
 cooldown:
