@@ -5,8 +5,10 @@ version: "1.0.0"
 covers:
   - course: kubernetes-basics
     modules:
-      - "What is Kubernetes ???"
+      - "What is Kubernetes"
       - "Pods and Containers"
+      - "Deployments"
+      - "Services"
 passing_score: 80
 cooldown:
   strategy: exponential
@@ -63,6 +65,11 @@ questions:
     feedback:
       wrong: "kubectl apply -f deployment.yaml est la méthode déclarative standard."
       correct: "Correct ! kubectl apply est utilisé pour appliquer des manifests."
+      source_refs:
+        - course: kubernetes-basics
+          module: "Deployments"
+          anchor: kubectl-apply
+          priority: 1
 
   - id: q3
     type: boolean
@@ -77,6 +84,11 @@ questions:
         ClusterIP est interne uniquement. Pour l'extérieur : NodePort, LoadBalancer
         ou Ingress.
       correct: "Exact ! ClusterIP n'est accessible que depuis l'intérieur du cluster."
+      source_refs:
+        - course: kubernetes-basics
+          module: "Services"
+          anchor: clusterip
+          priority: 1
 
   - id: q4
     type: multiple
@@ -103,6 +115,11 @@ questions:
     feedback:
       wrong: "ConfigMap stocke de la config. Service expose le réseau."
       correct: "Exact ! Deployment et ReplicaSet gèrent les réplicas."
+      source_refs:
+        - course: kubernetes-basics
+          module: "Deployments"
+          anchor: replicas
+          priority: 1
 
   - id: q5
     type: order
@@ -123,3 +140,8 @@ questions:
     feedback:
       wrong: "On écrit le manifest, on l'applique, on vérifie, puis on expose."
       correct: "Parfait ! L'ordre est logique : écrire → appliquer → vérifier → exposer."
+      source_refs:
+        - course: kubernetes-basics
+          module: "Deployments"
+          anchor: deployment-steps
+          priority: 1
