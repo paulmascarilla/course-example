@@ -1,5 +1,3 @@
-# <span class="rainbow">CI/CD & GitOps avec ArgoCD 🔄</span>
-
 <span class="spotlight">GitOps est le principe qui fait de Git la source de vérité unique pour l'infrastructure et les applications. Tout changement passe par une PR. Le cluster se réconcilie automatiquement.</span>
 
 ---

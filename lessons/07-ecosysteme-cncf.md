@@ -1,5 +1,3 @@
-# <span class="rainbow">L'Écosystème CNCF 🌐</span>
-
 <span class="spotlight">La Cloud Native Computing Foundation (CNCF) héberge les outils qui composent le stack cloud-native moderne : de Kubernetes jusqu'à l'observabilité, la sécurité et le déploiement.</span>
 
 ---

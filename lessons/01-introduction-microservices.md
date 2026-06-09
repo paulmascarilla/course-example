@@ -1,5 +1,3 @@
-# <span class="rainbow">Introduction aux Microservices 🚀</span>
-
 <span class="spotlight">Les microservices transforment la façon dont nous concevons, développons et déployons les applications modernes.</span> Là où le monolithe réunit tout en un seul bloc, l'architecture microservices décompose le système en services indépendants, chacun responsable d'un périmètre métier précis.
 
 ---

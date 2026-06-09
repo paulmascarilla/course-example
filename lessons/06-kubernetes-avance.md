@@ -1,5 +1,3 @@
-# <span class="rainbow">Kubernetes Avancé — Ingress, HPA & Stockage ⚙️</span>
-
 <span class="spotlight">Les ressources avancées de Kubernetes transforment un simple orchestrateur de conteneurs en plateforme production-grade : routage intelligent, scalabilité automatique, et stockage persistant.</span>
 
 ---

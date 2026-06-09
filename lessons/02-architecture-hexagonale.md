@@ -1,5 +1,3 @@
-# <span class="rainbow">Architecture Hexagonale (Ports & Adapters) 🔷</span>
-
 <span class="spotlight">L'architecture hexagonale, inventée par Alistair Cockburn en 2005, place la logique métier au centre de tout. L'infrastructure devient un détail d'implémentation.</span>
 
 ---

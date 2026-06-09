@@ -1,5 +1,3 @@
-# <span class="rainbow">Implémenter un Microservice en Go 🦫</span>
-
 <span class="spotlight">Go est le langage de prédilection du cloud-native. Binaires statiques, faible empreinte mémoire, goroutines légères — tout pour les microservices.</span>
 
 ---

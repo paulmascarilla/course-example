@@ -1,5 +1,3 @@
-# <span class="rainbow">Kubernetes — Les Fondamentaux ☸️</span>
-
 <span class="spotlight">Kubernetes orchestre vos conteneurs à grande échelle : placement, scalabilité, auto-réparation et réseau. C'est le système d'exploitation du cloud.</span>
 
 ---

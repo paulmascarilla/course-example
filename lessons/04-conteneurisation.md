@@ -1,5 +1,3 @@
-# <span class="rainbow">Conteneurisation avec Docker 🐳</span>
-
 <span class="spotlight">Conteneuriser un microservice Go correctement, c'est obtenir une image petite, sécurisée et reproductible — de quelques mégaoctets, démarrant en millisecondes.</span>
 
 ---
