@@ -2,13 +2,13 @@
 title: "Docker Compose"
 ---
 
-# <span class="rainbow">Docker Compose 🚀</span>
+# |||rainbow Docker Compose 🚀|||
 
-<span class="spotlight">Docker Compose is a tool for defining and running multi-container applications.</span>
+|||spotlight Docker Compose is a tool for defining and running multi-container applications.|||
 
 ---
 
-## <span class="rainbow">docker-compose.yml</span>
+## |||rainbow docker-compose.yml|||
 
 ```yaml
 version: '3.8'
@@ -37,7 +37,7 @@ volumes:
 
 ---
 
-## <span class="spotlight">Common Commands</span>
+## |||spotlight Common Commands|||
 
 ```bash
 # Start services
@@ -63,7 +63,7 @@ docker-compose up --build
 docker-compose up --scale web=3
 ```
 
-> <span class="blink">💡 Pro tip:</span> Combined with a reverse proxy like Nginx, you can load-balance across scaled services!
+> |||blink 💡 Pro tip:||| Combined with a reverse proxy like Nginx, you can load-balance across scaled services!
 
 ---
 
@@ -78,20 +78,18 @@ POSTGRES_DB=mydb
 
 ---
 
-## <span class="rainbow">Summary</span>
+## |||rainbow Summary|||
 
-<div class="pulse-glow" style="padding: 0.5rem 1rem; background: #f5f3ff; border-radius: 0.5rem; border-left: 4px solid #8b5cf6;">
-
+|||callout-purple
 Docker Compose simplifies:
 - Multi-container applications
 - Environment configuration
 - Service orchestration
 - Local development setups
+|||
 
-</div>
+|||spotlight 🎉 You completed the course! Amazing work!|||
 
-<span class="spotlight">🎉 You completed the course! Amazing work!</span>
+|||explode|||
 
-<div data-explode style="height: 1px;"></div>
-
-<span class="rainbow">✨ Félicitations ! 🎉</span>
+|||rainbow ✨ Félicitations ! 🎉|||

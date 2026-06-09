@@ -1,4 +1,4 @@
-<span class="spotlight">Kubernetes orchestre vos conteneurs à grande échelle : placement, scalabilité, auto-réparation et réseau. C'est le système d'exploitation du cloud.</span>
+|||spotlight Kubernetes orchestre vos conteneurs à grande échelle : placement, scalabilité, auto-réparation et réseau. C'est le système d'exploitation du cloud.|||
 
 ---
 
@@ -203,16 +203,14 @@ spec:
 
 **Types de Service :**
 
-<div class="pulse-glow" style="padding: 0.5rem 1rem; background: #f0fdf4; border-radius: 0.5rem; border-left: 4px solid #22c55e;">
-
+|||callout-green
 | Type | Usage | Accès |
 |---|---|---|
 | `ClusterIP` | Communication inter-services | Cluster uniquement |
 | `NodePort` | Développement/tests | Port sur chaque nœud |
 | `LoadBalancer` | Production (cloud) | IP externe via cloud LB |
 | `ExternalName` | Alias DNS vers service externe | — |
-
-</div>
+|||
 
 **DNS interne** : `order-service.production.svc.cluster.local`
 
@@ -333,8 +331,7 @@ kubectl diff -f deployment.yaml
 
 ## Requests & Limits — la ressource clé
 
-<div class="pulse-glow" style="padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; background: #fef9c3; border-left: 4px solid #eab308;">
-
+|||callout-yellow
 **Ne jamais déployer sans `resources`.**
 
 - **requests** : ce que le scheduler garantit au Pod (utilisé pour le placement)
@@ -353,8 +350,7 @@ resources:
 **Bonnes valeurs de départ pour un service Go** :
 - CPU request : `50m-100m`, limit : `200m-500m`
 - Memory request : `64Mi-128Mi`, limit : `128Mi-256Mi`
-
-</div>
+|||
 
 ---
 
@@ -378,4 +374,4 @@ Garantit que lors d'un drain de nœud ou d'une mise à jour de cluster, au moins
 
 ---
 
-<span class="rainbow">☸️ Vous maîtrisez les fondamentaux de Kubernetes. Passons aux concepts avancés : Ingress, HPA, et stockage ! ➜</span>
+|||rainbow ☸️ Vous maîtrisez les fondamentaux de Kubernetes. Passons aux concepts avancés : Ingress, HPA, et stockage ! ➜|||

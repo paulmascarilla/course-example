@@ -1,4 +1,4 @@
-<span class="spotlight">Les microservices transforment la façon dont nous concevons, développons et déployons les applications modernes.</span> Là où le monolithe réunit tout en un seul bloc, l'architecture microservices décompose le système en services indépendants, chacun responsable d'un périmètre métier précis.
+|||spotlight Les microservices transforment la façon dont nous concevons, développons et déployons les applications modernes.||| Là où le monolithe réunit tout en un seul bloc, l'architecture microservices décompose le système en services indépendants, chacun responsable d'un périmètre métier précis.
 
 ---
 
@@ -18,8 +18,7 @@ Un **microservice** est un service logiciel autonome qui :
 
 ## Monolithe vs Microservices
 
-<div class="pulse-glow" style="padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
-
+|||callout
 | Critère | Monolithe | Microservices |
 |---|---|---|
 | Déploiement | Une seule unité | Indépendant par service |
@@ -28,8 +27,7 @@ Un **microservice** est un service logiciel autonome qui :
 | Complexité opérationnelle | Faible | Élevée |
 | Tolérance aux pannes | Un bug peut tout bloquer | Isolation des pannes |
 | Time-to-market | Rapide au début | Rapide à grande échelle |
-
-</div>
+|||
 
 ### Quand choisir les microservices ?
 
@@ -164,8 +162,7 @@ my-service/
 
 Une application microservice cloud-native suit ces principes :
 
-<div class="pulse-glow" style="padding: 0.5rem 1rem; background: #f0f9ff; border-radius: 0.5rem; border-left: 4px solid #0ea5e9;">
-
+|||callout-blue
 1. **Codebase** — Un repo, plusieurs déploiements
 2. **Dependencies** — Dépendances déclarées explicitement
 3. **Config** — Configuration dans l'environnement
@@ -178,12 +175,11 @@ Une application microservice cloud-native suit ces principes :
 10. **Dev/prod parity** — Environnements similaires
 11. **Logs** — Traités comme des flux d'événements
 12. **Admin processes** — Tâches admin comme des one-offs
-
-</div>
+|||
 
 ---
 
-## <span class="spotlight">Ce que vous allez construire dans ce cours</span>
+## |||spotlight Ce que vous allez construire dans ce cours|||
 
 Au fil des modules, vous allez :
 
@@ -194,4 +190,4 @@ Au fil des modules, vous allez :
 5. **Observer** avec Prometheus, Grafana et Jaeger
 6. **Automatiser** avec CI/CD et GitOps (ArgoCD)
 
-<span class="rainbow">🎯 Prêt à maîtriser les microservices ? Passons à l'architecture hexagonale ! ➜</span>
+|||rainbow 🎯 Prêt à maîtriser les microservices ? Passons à l'architecture hexagonale ! ➜|||

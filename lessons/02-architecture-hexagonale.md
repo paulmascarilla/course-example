@@ -1,4 +1,4 @@
-<span class="spotlight">L'architecture hexagonale, inventée par Alistair Cockburn en 2005, place la logique métier au centre de tout. L'infrastructure devient un détail d'implémentation.</span>
+|||spotlight L'architecture hexagonale, inventée par Alistair Cockburn en 2005, place la logique métier au centre de tout. L'infrastructure devient un détail d'implémentation.|||
 
 ---
 
@@ -216,8 +216,7 @@ func (h *HTTPAdapter) CreateOrder(w http.ResponseWriter, r *http.Request) {
 
 ## La règle de dépendance
 
-<div class="pulse-glow" style="padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; background: #fef9c3; border-left: 4px solid #eab308;">
-
+|||callout-yellow
 **Règle fondamentale : les dépendances ne pointent que vers l'intérieur.**
 
 ```
@@ -229,8 +228,7 @@ infrastructure → application → domain
 Le domaine NE CONNAÎT PAS l'application.
 L'application NE CONNAÎT PAS l'infrastructure.
 ```
-
-</div>
+|||
 
 Concrètement en Go : le package `domain` n'importe **aucun** package externe (`database/sql`, `net/http`, etc.). Il ne dépend que de la bibliothèque standard.
 
@@ -365,19 +363,17 @@ order-service/
 
 ## Comparaison avec d'autres architectures
 
-<div class="pulse-glow" style="padding: 0.5rem 1rem; background: #f0fdf4; border-radius: 0.5rem; border-left: 4px solid #22c55e;">
-
+|||callout-green
 | Architecture | Testabilité | Flexibilité infra | Complexité |
 |---|---|---|---|
 | Monolithe en couches | Faible | Faible | Faible |
 | Clean Architecture | Élevée | Élevée | Moyenne |
 | **Hexagonale** | **Élevée** | **Élevée** | **Moyenne** |
 | CQRS + Event Sourcing | Très élevée | Très élevée | Élevée |
-
-</div>
+|||
 
 L'architecture hexagonale est souvent présentée comme équivalente à la *Clean Architecture* de Robert Martin — les principes sont identiques, la terminologie diffère légèrement.
 
 ---
 
-<span class="rainbow">🔷 Vous maîtrisez maintenant les fondements. Dans le prochain module, on implémente un vrai microservice en Go ! ➜</span>
+|||rainbow 🔷 Vous maîtrisez maintenant les fondements. Dans le prochain module, on implémente un vrai microservice en Go ! ➜|||

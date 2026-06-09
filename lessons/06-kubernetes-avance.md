@@ -1,4 +1,4 @@
-<span class="spotlight">Les ressources avancées de Kubernetes transforment un simple orchestrateur de conteneurs en plateforme production-grade : routage intelligent, scalabilité automatique, et stockage persistant.</span>
+|||spotlight Les ressources avancées de Kubernetes transforment un simple orchestrateur de conteneurs en plateforme production-grade : routage intelligent, scalabilité automatique, et stockage persistant.|||
 
 ---
 
@@ -383,8 +383,7 @@ spec:
 
 ## Manifests complets pour la production
 
-<div class="pulse-glow" style="padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; background: #f5f3ff; border-left: 4px solid #8b5cf6;">
-
+|||callout-purple
 **Organisation recommandée des manifests :**
 
 ```
@@ -408,8 +407,7 @@ k8s/
 ```
 
 Utilisez **Kustomize** (intégré à kubectl) ou **Helm** pour gérer les différences entre environnements.
-
-</div>
+|||
 
 ```bash
 # Appliquer avec Kustomize
@@ -421,4 +419,4 @@ kubectl get all,ingress,hpa,pdb -n production
 
 ---
 
-<span class="rainbow">⚙️ Votre infrastructure Kubernetes est production-ready. Place à l'écosystème CNCF ! ➜</span>
+|||rainbow ⚙️ Votre infrastructure Kubernetes est production-ready. Place à l'écosystème CNCF ! ➜|||

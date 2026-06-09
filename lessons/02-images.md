@@ -2,9 +2,9 @@
 title: "Docker Images and Containers"
 ---
 
-# <span class="rainbow">Docker Images & Containers 🐳</span>
+# |||rainbow Docker Images & Containers 🐳|||
 
-## <span class="spotlight">Understanding Images</span>
+## |||spotlight Understanding Images|||
 
 A Docker image is a read-only template with instructions for creating a container. Images are the building blocks of Docker.
 
@@ -22,11 +22,11 @@ docker images
 docker images -a
 ```
 
-> <span class="blink">💡 Tip:</span> Use `docker images -a` to see all intermediate layers too!
+> |||blink 💡 Tip:||| Use `docker images -a` to see all intermediate layers too!
 
 ---
 
-## <span class="spotlight">Working with Containers</span>
+## |||spotlight Working with Containers|||
 
 ### Creating Containers
 
@@ -69,15 +69,13 @@ docker build -t my-app:latest .
 
 ---
 
-## <span class="rainbow">Best Practices</span>
+## |||rainbow Best Practices|||
 
-<div class="pulse-glow" style="padding: 0.5rem 1rem; background: #fefce8; border-radius: 0.5rem; border-left: 4px solid #eab308;">
-
+|||callout-yellow
 1. Use multi-stage builds for smaller images
 2. Don't install unnecessary packages
 3. Use specific version tags, not `latest`
 4. Leverage layer caching
+|||
 
-</div>
-
-<span class="spotlight">🎯 Great job! Keep going!</span>
+|||spotlight 🎯 Great job! Keep going!|||

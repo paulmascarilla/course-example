@@ -1,4 +1,4 @@
-<span class="spotlight">Conteneuriser un microservice Go correctement, c'est obtenir une image petite, sécurisée et reproductible — de quelques mégaoctets, démarrant en millisecondes.</span>
+|||spotlight Conteneuriser un microservice Go correctement, c'est obtenir une image petite, sécurisée et reproductible — de quelques mégaoctets, démarrant en millisecondes.|||
 
 ---
 
@@ -48,16 +48,14 @@ ENTRYPOINT ["/order-service"]
 
 ### Pourquoi `distroless` ?
 
-<div class="pulse-glow" style="padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
-
+|||callout
 | Image de base | Taille | Shell | Packages | Surface d'attaque |
 |---|---|---|---|---|
 | `ubuntu:24.04` | ~77MB | ✅ bash | ~400 | Élevée |
 | `alpine:3.20` | ~7MB | ✅ sh | ~50 | Faible |
 | `distroless/static` | ~2MB | ❌ | 0 | Minimale |
 | `scratch` | 0MB | ❌ | 0 | Zéro |
-
-</div>
+|||
 
 `distroless` est le meilleur compromis : pas de shell (impossible d'exécuter des commandes en cas de compromission), mais inclut les certificats TLS et les timezone data.
 
@@ -247,11 +245,9 @@ grype ghcr.io/myorg/order-service:1.2.3
 docker scout cves ghcr.io/myorg/order-service:1.2.3
 ```
 
-<div class="pulse-glow" style="padding: 0.5rem 1rem; background: #fef9c3; border-radius: 0.5rem; border-left: 4px solid #eab308;">
-
+|||callout-yellow
 **Règle d'or** : zéro CVE critique ou haute dans les images de production. Les images distroless ont rarement des vulnérabilités car elles n'ont pas de gestionnaire de paquets ni de binaires système.
-
-</div>
+|||
 
 ---
 
@@ -302,4 +298,4 @@ docker buildx build \
 
 ---
 
-<span class="rainbow">🐳 Votre microservice est conteneurisé correctement. Prochaine étape : le déployer sur Kubernetes ! ➜</span>
+|||rainbow 🐳 Votre microservice est conteneurisé correctement. Prochaine étape : le déployer sur Kubernetes ! ➜|||

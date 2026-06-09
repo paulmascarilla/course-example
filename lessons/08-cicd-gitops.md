@@ -1,4 +1,4 @@
-<span class="spotlight">GitOps est le principe qui fait de Git la source de vérité unique pour l'infrastructure et les applications. Tout changement passe par une PR. Le cluster se réconcilie automatiquement.</span>
+|||spotlight GitOps est le principe qui fait de Git la source de vérité unique pour l'infrastructure et les applications. Tout changement passe par une PR. Le cluster se réconcilie automatiquement.|||
 
 ---
 
@@ -433,8 +433,7 @@ data:
 
 ## Récapitulatif du pipeline complet
 
-<div class="pulse-glow" style="padding: 1rem; border-radius: 0.5rem; margin: 1rem 0; background: #f0fdf4; border-left: 4px solid #22c55e;">
-
+|||callout-green
 ```
 git push
   │
@@ -461,14 +460,13 @@ GitHub Actions CI
           Promotion production
           (manuelle ou canary automatique)
 ```
-
-</div>
+|||
 
 ---
 
-<div data-explode style="height: 1px;"></div>
+|||explode|||
 
-<span class="rainbow">✨ Félicitations ! Vous avez terminé le cours sur les Microservices en Architecture Hexagonale avec Kubernetes ! 🎉</span>
+|||rainbow ✨ Félicitations ! Vous avez terminé le cours sur les Microservices en Architecture Hexagonale avec Kubernetes ! 🎉|||
 
 Vous maîtrisez maintenant :
 - La conception en architecture hexagonale (Ports & Adapters)
@@ -478,4 +476,4 @@ Vous maîtrisez maintenant :
 - L'écosystème CNCF : Helm, Prometheus, Jaeger, cert-manager
 - Le CI/CD moderne avec GitHub Actions et ArgoCD (GitOps)
 
-<span class="spotlight">Allez plus loin : explorez le Service Mesh (Istio/Linkerd) et l'Event Sourcing avec CQRS !</span>
+|||spotlight Allez plus loin : explorez le Service Mesh (Istio/Linkerd) et l'Event Sourcing avec CQRS !|||
