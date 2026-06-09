@@ -1,0 +1,77 @@
+apiVersion: elearning.example.com/v1
+kind: Course
+metadata:
+  name: microservices-kubernetes
+  namespace: default
+spec:
+  title: "Microservices en Architecture Hexagonale & Kubernetes"
+  description: >
+    Maîtrisez le développement de microservices cloud-native : architecture hexagonale
+    (Ports & Adapters), implémentation Go, conteneurisation Docker multi-stage,
+    déploiement Kubernetes avec les ressources avancées (HPA, Ingress, RBAC),
+    et l'écosystème CNCF (Helm, Prometheus, Jaeger, ArgoCD).
+  category: "cloud-native"
+  difficulty: "intermediate"
+  public: false
+  hidden: false
+  modules:
+  - name: "Introduction aux Microservices"
+    type: text
+    src: https://github.com/paulmascarilla/course-example
+    ref: main
+    path: lessons/01-introduction-microservices.md
+
+  - name: "Architecture Hexagonale (Ports & Adapters)"
+    type: text
+    src: https://github.com/paulmascarilla/course-example
+    ref: main
+    path: lessons/02-architecture-hexagonale.md
+
+  - name: "Quiz — Microservices & Architecture Hexagonale"
+    type: quiz
+    src: https://github.com/paulmascarilla/course-example
+    ref: main
+    path: quizzes/microservices-hexagonal.yaml
+    inline: true
+
+  - name: "Implémenter un Microservice en Go"
+    type: text
+    src: https://github.com/paulmascarilla/course-example
+    ref: main
+    path: lessons/03-implementation-go.md
+
+  - name: "Conteneurisation avec Docker"
+    type: text
+    src: https://github.com/paulmascarilla/course-example
+    ref: main
+    path: lessons/04-conteneurisation.md
+
+  - name: "Kubernetes — Les Fondamentaux"
+    type: text
+    src: https://github.com/paulmascarilla/course-example
+    ref: main
+    path: lessons/05-kubernetes-core.md
+
+  - name: "Kubernetes Avancé — Ingress, HPA & Stockage"
+    type: text
+    src: https://github.com/paulmascarilla/course-example
+    ref: main
+    path: lessons/06-kubernetes-avance.md
+
+  - name: "L'Écosystème CNCF"
+    type: text
+    src: https://github.com/paulmascarilla/course-example
+    ref: main
+    path: lessons/07-ecosysteme-cncf.md
+
+  - name: "CI/CD & GitOps avec ArgoCD"
+    type: text
+    src: https://github.com/paulmascarilla/course-example
+    ref: main
+    path: lessons/08-cicd-gitops.md
+
+  - name: "Quiz Final — Kubernetes & CNCF"
+    type: quiz
+    src: https://github.com/paulmascarilla/course-example
+    ref: main
+    path: quizzes/kubernetes-microservices.yaml

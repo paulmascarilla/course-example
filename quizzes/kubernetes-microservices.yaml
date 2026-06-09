@@ -1,0 +1,296 @@
+id: kubernetes-microservices
+title: "Quiz Final — Kubernetes & CNCF pour Microservices"
+description: "Évaluez votre maîtrise de Kubernetes, de l'écosystème CNCF, et du CI/CD GitOps pour les microservices."
+version: "1.0.0"
+covers:
+  - course: microservices-kubernetes
+    modules:
+      - "Conteneurisation avec Docker"
+      - "Kubernetes — Les Fondamentaux"
+      - "Kubernetes Avancé"
+      - "L'Écosystème CNCF"
+      - "CI/CD & GitOps avec ArgoCD"
+passing_score: 80
+cooldown:
+  strategy: exponential
+  base_seconds: 60
+  multiplier: 2.0
+  max_seconds: 1800
+max_attempts_per_question: 3
+lock_on_max_attempts: false
+questions:
+
+  - id: q1
+    type: single
+    difficulty: easy
+    points: 1
+    question: |
+      Pourquoi utilise-t-on `CGO_ENABLED=0` lors de la compilation d'un binaire Go
+      pour Docker ?
+    answers:
+      - id: a
+        text: "Pour accélérer la compilation"
+        correct: false
+      - id: b
+        text: "Pour produire un binaire statique compatible avec une image distroless ou scratch"
+        correct: true
+      - id: c
+        text: "Pour activer le garbage collector"
+        correct: false
+      - id: d
+        text: "Pour désactiver les tests"
+        correct: false
+    feedback:
+      wrong: "CGO_ENABLED=0 désactive CGO et produit un binaire statique sans dépendances glibc — parfait pour distroless."
+      correct: "Exact ! Sans CGO, le binaire est autonome et fonctionne dans n'importe quelle image Linux."
+
+  - id: q2
+    type: boolean
+    difficulty: easy
+    points: 1
+    question: |
+      L'image Docker `distroless/static` inclut un shell (`/bin/sh`) pour déboguer le conteneur.
+    correct_answer: false
+    feedback:
+      wrong: |
+        Distroless n'a pas de shell. C'est une feature de sécurité : impossible d'exécuter
+        des commandes si le conteneur est compromis.
+      correct: "Exact ! Distroless = pas de shell, pas de gestionnaire de paquets. Surface d'attaque minimale."
+
+  - id: q3
+    type: single
+    difficulty: easy
+    points: 1
+    question: |
+      Quelle est la différence entre `requests` et `limits` CPU dans Kubernetes ?
+    answers:
+      - id: a
+        text: "Requests = maximum autorisé, limits = garanti"
+        correct: false
+      - id: b
+        text: "Requests = garanti par le scheduler, limits = maximum autorisé"
+        correct: true
+      - id: c
+        text: "Requests et limits sont identiques, juste des noms différents"
+        correct: false
+      - id: d
+        text: "Requests est pour le CPU, limits est pour la mémoire"
+        correct: false
+    feedback:
+      wrong: "Requests : ce que le scheduler garantit pour le placement. Limits : plafond (throttling CPU, OOM kill mémoire)."
+      correct: "Exact ! Toujours définir les deux : requests pour le placement, limits pour la protection."
+
+  - id: q4
+    type: single
+    difficulty: easy
+    points: 1
+    question: |
+      Quelle commande Kubernetes permet d'afficher les événements récents d'un namespace
+      pour déboguer un Pod qui ne démarre pas ?
+    answers:
+      - id: a
+        text: "kubectl logs -n production"
+        correct: false
+      - id: b
+        text: "kubectl describe pod -n production"
+        correct: false
+      - id: c
+        text: "kubectl get events -n production --sort-by='.lastTimestamp'"
+        correct: true
+      - id: d
+        text: "kubectl top pods -n production"
+        correct: false
+    feedback:
+      wrong: "kubectl get events est le meilleur outil pour comprendre pourquoi un Pod ne démarre pas (ImagePullBackOff, OOMKilled, etc.)."
+      correct: "Exact ! Les events Kubernetes contiennent les raisons des échecs de scheduling et de démarrage."
+
+  - id: q5
+    type: multiple
+    difficulty: medium
+    points: 2
+    question: |
+      Quels objets Kubernetes utilise-t-on pour déployer un microservice stateless en production ?
+    answers:
+      - id: a
+        text: "Deployment"
+        correct: true
+      - id: b
+        text: "Service"
+        correct: true
+      - id: c
+        text: "PodDisruptionBudget"
+        correct: true
+      - id: d
+        text: "StatefulSet"
+        correct: false
+    partial_scoring:
+      enabled: true
+      allow_negative: false
+    feedback:
+      wrong: |
+        StatefulSet est pour les services avec état (bases de données).
+        Un microservice stateless utilise Deployment + Service + PDB pour la haute disponibilité.
+      correct: "Exact ! Deployment (réplicas), Service (réseau stable), PDB (haute disponibilité pendant maintenance)."
+
+  - id: q6
+    type: boolean
+    difficulty: medium
+    points: 2
+    question: |
+      Un Secret Kubernetes de type `Opaque` chiffre les données au repos par défaut
+      dans un cluster standard.
+    correct_answer: false
+    feedback:
+      wrong: |
+        Les Secrets Kubernetes sont encodés en base64, pas chiffrés ! Pour un vrai chiffrement,
+        il faut activer Encryption at Rest dans etcd ou utiliser External Secrets Operator + Vault.
+      correct: "Exact ! Base64 ≠ chiffrement. En production, utilisez External Secrets Operator ou Sealed Secrets."
+
+  - id: q7
+    type: single
+    difficulty: medium
+    points: 2
+    question: |
+      Quel objet Kubernetes ajuste automatiquement le nombre de réplicas d'un Deployment
+      selon l'utilisation CPU ?
+    answers:
+      - id: a
+        text: "VerticalPodAutoscaler (VPA)"
+        correct: false
+      - id: b
+        text: "HorizontalPodAutoscaler (HPA)"
+        correct: true
+      - id: c
+        text: "ClusterAutoscaler"
+        correct: false
+      - id: d
+        text: "PodDisruptionBudget (PDB)"
+        correct: false
+    feedback:
+      wrong: |
+        HPA = scale horizontal (nombre de pods). VPA = ajuste requests/limits.
+        ClusterAutoscaler = ajoute des nœuds. PDB = protège pendant la maintenance.
+      correct: "Exact ! HPA surveille les métriques et ajoute ou supprime des Pods automatiquement."
+
+  - id: q8
+    type: single
+    difficulty: medium
+    points: 2
+    question: |
+      Quelle est la responsabilité de Helm dans un projet Kubernetes ?
+    answers:
+      - id: a
+        text: "Orchestrer les conteneurs Docker"
+        correct: false
+      - id: b
+        text: "Empaqueter, versionner et déployer des applications Kubernetes via des charts"
+        correct: true
+      - id: c
+        text: "Collecter les métriques des Pods"
+        correct: false
+      - id: d
+        text: "Gérer le routage réseau entre services"
+        correct: false
+    feedback:
+      wrong: "Helm est le gestionnaire de paquets de Kubernetes. Un chart = templates + values, versionnés et réutilisables."
+      correct: "Exact ! Helm simplifie le déploiement en paramétrant les manifests et en gérant l'historique."
+
+  - id: q9
+    type: single
+    difficulty: hard
+    points: 3
+    question: |
+      Dans le pipeline GitOps, que fait ArgoCD quand un développeur modifie directement
+      un objet Kubernetes via `kubectl edit` (sans passer par Git) ?
+    answers:
+      - id: a
+        text: "Il ignore la modification et laisse l'état dériver"
+        correct: false
+      - id: b
+        text: "Il déclenche une alerte mais ne corrige pas"
+        correct: false
+      - id: c
+        text: "Il détecte le drift et re-synchronise l'état souhaité depuis Git (selfHeal: true)"
+        correct: true
+      - id: d
+        text: "Il supprime le Pod concerné"
+        correct: false
+    feedback:
+      wrong: |
+        Avec selfHeal: true, ArgoCD compare périodiquement l'état live avec Git.
+        Si quelqu'un modifie manuellement, ArgoCD re-applique l'état de Git automatiquement.
+      correct: "Exact ! C'est la force de GitOps : Git est la source de vérité, toute dérive est corrigée."
+
+  - id: q10
+    type: multiple
+    difficulty: hard
+    points: 3
+    question: |
+      Quels outils composent une stack d'observabilité complète pour les microservices (les 3 piliers) ?
+    answers:
+      - id: a
+        text: "Prometheus (métriques)"
+        correct: true
+      - id: b
+        text: "Jaeger ou OpenTelemetry (tracing distribué)"
+        correct: true
+      - id: c
+        text: "Loki ou ELK (logs)"
+        correct: true
+      - id: d
+        text: "Helm (packaging)"
+        correct: false
+    partial_scoring:
+      enabled: true
+      allow_negative: false
+    feedback:
+      wrong: "Les 3 piliers de l'observabilité : Métriques (Prometheus) + Traces (Jaeger/OTel) + Logs (Loki/ELK). Helm est pour le packaging."
+      correct: "Exact ! Metrics + Traces + Logs = les 3 piliers de l'observabilité cloud-native."
+
+  - id: q11
+    type: order
+    difficulty: hard
+    points: 3
+    question: |
+      Remettez dans l'ordre les étapes d'un pipeline CI/CD GitOps typique.
+    items:
+      - id: i1
+        text: "git push sur la branche main"
+      - id: i2
+        text: "GitHub Actions : build + test + scan Trivy"
+      - id: i3
+        text: "Push de l'image vers ghcr.io"
+      - id: i4
+        text: "Mise à jour du tag d'image dans le repo de config (values.yaml)"
+      - id: i5
+        text: "ArgoCD détecte le diff et applique sur Kubernetes"
+    correct_order: [i1, i2, i3, i4, i5]
+    feedback:
+      wrong: "L'ordre est : push → CI (test+build) → registry → update config → ArgoCD sync."
+      correct: "Parfait ! Ce pipeline garantit que tout déploiement passe par Git et est traçable."
+
+  - id: q12
+    type: single
+    difficulty: hard
+    points: 3
+    question: |
+      Quelle stratégie de déploiement permet d'envoyer 10% du trafic vers la nouvelle version
+      d'un microservice pour valider avant de basculer tous les utilisateurs ?
+    answers:
+      - id: a
+        text: "Blue/Green deployment"
+        correct: false
+      - id: b
+        text: "Rolling update"
+        correct: false
+      - id: c
+        text: "Canary deployment"
+        correct: true
+      - id: d
+        text: "Recreate deployment"
+        correct: false
+    feedback:
+      wrong: |
+        Canary = % progressif du trafic. Blue/Green = bascule totale instantanée.
+        Rolling = remplace Pod par Pod. Recreate = arrêt complet puis redémarrage.
+      correct: "Exact ! Le déploiement canary réduit le risque en exposant d'abord un petit % d'utilisateurs."
