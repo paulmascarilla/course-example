@@ -2,13 +2,13 @@
 title: "Docker Compose"
 ---
 
-# |||rainbow Docker Compose 🚀|||
+# Docker Compose
 
-|||spotlight Docker Compose is a tool for defining and running multi-container applications.|||
+Docker Compose is a tool for defining and running multi-container applications.
 
 ---
 
-## |||rainbow docker-compose.yml|||
+## docker-compose.yml
 
 ```yaml
 version: '3.8'
@@ -37,7 +37,7 @@ volumes:
 
 ---
 
-## |||spotlight Common Commands|||
+## Common Commands
 
 ```bash
 # Start services
@@ -63,7 +63,7 @@ docker-compose up --build
 docker-compose up --scale web=3
 ```
 
-> |||blink 💡 Pro tip:||| Combined with a reverse proxy like Nginx, you can load-balance across scaled services!
+> **Pro tip:** Combined with a reverse proxy like Nginx, you can load-balance across scaled services!
 
 ---
 
@@ -78,18 +78,10 @@ POSTGRES_DB=mydb
 
 ---
 
-## |||rainbow Summary|||
+## Summary
 
-|||callout-purple
 Docker Compose simplifies:
 - Multi-container applications
 - Environment configuration
 - Service orchestration
 - Local development setups
-|||
-
-|||spotlight 🎉 You completed the course! Amazing work!|||
-
-|||explode|||
-
-|||rainbow ✨ Félicitations ! 🎉|||

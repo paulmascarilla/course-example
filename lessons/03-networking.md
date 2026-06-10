@@ -2,18 +2,16 @@
 title: "Docker Networking"
 ---
 
-# |||rainbow Docker Networking 🌐|||
+# Docker Networking
 
 ## Network Types
 
 Docker provides several network drivers:
 
-|||callout-green
 - **bridge**: Default network for standalone containers
 - **host**: Removes network isolation between container and host
 - **overlay**: Connects containers across multiple Docker hosts
 - **none**: Disables all networking
-|||
 
 ## Managing Networks
 
@@ -48,7 +46,7 @@ docker network inspect app-network
 
 ---
 
-## |||spotlight Port Mapping|||
+## Port Mapping
 
 Map container ports to host ports:
 
@@ -57,7 +55,7 @@ docker run -p 8080:80 nginx
 docker run -p 5432:5432 postgres:16-alpine
 ```
 
-> |||blink ⚠️ Warning:||| Avoid port conflicts by checking which ports are already in use!
+> **Warning:** Avoid port conflicts by checking which ports are already in use!
 
 ---
 
@@ -70,5 +68,3 @@ Containers on the same network can reach each other by name:
 ping db
 psql -h db -U postgres
 ```
-
-|||rainbow 🔗 Networking made simple!|||
