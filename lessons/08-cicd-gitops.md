@@ -1,29 +1,14 @@
-|||spotlight GitOps est le principe qui fait de Git la source de vérité unique pour l'infrastructure et les applications. Tout changement passe par une PR. Le cluster se réconcilie automatiquement.|||
+GitOps est le principe qui fait de Git la source de vérité unique pour l'infrastructure et les applications. Tout changement passe par une PR. Le cluster se réconcilie automatiquement.
 
 ---
 
 ## Le pipeline CI/CD pour microservices
 
-```
-Commit → CI (test + build) → Registry → CD (deploy)
-  ↓           ↓                 ↓           ↓
- Git     GitHub Actions    ghcr.io      ArgoCD
-```
+![Pipeline CI/CD](https://raw.githubusercontent.com/paulmascarilla/course-example/main/diagrams/09_cicd_pipeline.svg)
 
 ### Principe GitOps
 
-```
-Développeur         App Repo                 Config Repo
-     │                  │                        │
-     ├─ git push ──────►│                        │
-     │                  ├─ CI: test + build ─────►│
-     │                  │                        ├─ Update image tag
-     │                  │                        │   (values.yaml)
-     │                  │                        │
-     │                  │               ArgoCD ◄──┤ Détecte le diff
-     │                  │                        │
-     │                  │            K8s Cluster ◄┤ kubectl apply
-```
+![GitOps Workflow](https://raw.githubusercontent.com/paulmascarilla/course-example/main/diagrams/10_gitops_workflow.svg)
 
 ---
 
@@ -433,40 +418,11 @@ data:
 
 ## Récapitulatif du pipeline complet
 
-|||callout-green
-```
-git push
-  │
-  ▼
-GitHub Actions CI
-  ├── go test (unit + integration)
-  ├── golangci-lint
-  ├── docker buildx (multi-arch)
-  ├── trivy scan (vulnérabilités)
-  └── Update values.yaml (config repo)
-                    │
-                    ▼
-               ArgoCD détecte le diff
-                    │
-                    ▼
-               kubectl apply (staging)
-                    │
-                    ▼
-               Tests E2E automatiques
-                    │
-               ┌────┴────┐
-               │ OK       │ KO → alerte Slack
-               ▼
-          Promotion production
-          (manuelle ou canary automatique)
-```
-|||
+![Pipeline complet E2E](https://raw.githubusercontent.com/paulmascarilla/course-example/main/diagrams/11_full_pipeline_e2e.svg)
 
 ---
 
-|||explode|||
 
-|||rainbow ✨ Félicitations ! Vous avez terminé le cours sur les Microservices en Architecture Hexagonale avec Kubernetes ! 🎉|||
 
 Vous maîtrisez maintenant :
 - La conception en architecture hexagonale (Ports & Adapters)
@@ -476,4 +432,4 @@ Vous maîtrisez maintenant :
 - L'écosystème CNCF : Helm, Prometheus, Jaeger, cert-manager
 - Le CI/CD moderne avec GitHub Actions et ArgoCD (GitOps)
 
-|||spotlight Allez plus loin : explorez le Service Mesh (Istio/Linkerd) et l'Event Sourcing avec CQRS !|||
+Allez plus loin : explorez le Service Mesh (Istio/Linkerd) et l'Event Sourcing avec CQRS !

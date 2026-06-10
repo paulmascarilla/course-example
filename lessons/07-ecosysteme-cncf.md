@@ -1,4 +1,4 @@
-|||spotlight La Cloud Native Computing Foundation (CNCF) héberge les outils qui composent le stack cloud-native moderne : de Kubernetes jusqu'à l'observabilité, la sécurité et le déploiement.|||
+La Cloud Native Computing Foundation (CNCF) héberge les outils qui composent le stack cloud-native moderne : de Kubernetes jusqu'à l'observabilité, la sécurité et le déploiement.
 
 ---
 
@@ -414,7 +414,6 @@ spec:
 
 ## Vue d'ensemble du stack CNCF
 
-|||callout
 | Catégorie | Outil | Maturité |
 |---|---|---|
 | Orchestration | Kubernetes | ✅ Graduated |
@@ -427,8 +426,6 @@ spec:
 | GitOps | ArgoCD, Flux | ✅ Graduated |
 | Secrets | External Secrets Operator | ⚡ Incubating |
 | TLS | cert-manager | ⚡ Incubating |
-|||
 
 ---
 
-|||rainbow 🌐 Vous connaissez maintenant le stack CNCF. Dernier module : CI/CD et GitOps avec ArgoCD ! ➜|||

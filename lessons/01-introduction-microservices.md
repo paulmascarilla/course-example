@@ -1,4 +1,4 @@
-|||spotlight Les microservices transforment la façon dont nous concevons, développons et déployons les applications modernes.||| Là où le monolithe réunit tout en un seul bloc, l'architecture microservices décompose le système en services indépendants, chacun responsable d'un périmètre métier précis.
+Les microservices transforment la façon dont nous concevons, développons et déployons les applications modernes. Là où le monolithe réunit tout en un seul bloc, l'architecture microservices décompose le système en services indépendants, chacun responsable d'un périmètre métier précis.
 
 ---
 
@@ -18,7 +18,6 @@ Un **microservice** est un service logiciel autonome qui :
 
 ## Monolithe vs Microservices
 
-|||callout
 | Critère | Monolithe | Microservices |
 |---|---|---|
 | Déploiement | Une seule unité | Indépendant par service |
@@ -27,7 +26,6 @@ Un **microservice** est un service logiciel autonome qui :
 | Complexité opérationnelle | Faible | Élevée |
 | Tolérance aux pannes | Un bug peut tout bloquer | Isolation des pannes |
 | Time-to-market | Rapide au début | Rapide à grande échelle |
-|||
 
 ### Quand choisir les microservices ?
 
@@ -52,16 +50,7 @@ Chaque service fait **une seule chose, et la fait bien**. Un service `user-servi
 
 Le **Domain-Driven Design** introduit la notion de *Bounded Context* : chaque service a son propre vocabulaire et modèle de données, même si deux services parlent d'un "utilisateur", leur représentation peut différer.
 
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   user-service  │    │  order-service  │    │ billing-service │
-│                 │    │                 │    │                 │
-│  User {         │    │  Customer {     │    │  Payer {        │
-│    id, email,   │    │    id, name,    │    │    id, iban,    │
-│    roles        │    │    address      │    │    invoices     │
-│  }              │    │  }              │    │  }              │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-```
+![Bounded Contexts](https://raw.githubusercontent.com/paulmascarilla/course-example/main/diagrams/01_bounded_contexts.svg)
 
 ### 3. Design for Failure
 
@@ -74,24 +63,9 @@ Dans un système distribué, **les pannes sont inévitables**. Chaque service do
 
 ### 4. Decentralized Data Management
 
-```
-❌ Mauvais : base de données partagée
-┌──────────┐    ┌──────────┐    ┌──────────┐
-│ service A│    │ service B│    │ service C│
-└────┬─────┘    └────┬─────┘    └────┬─────┘
-     └───────────────┼───────────────┘
-              ┌──────▼──────┐
-              │   DB unique │
-              └─────────────┘
+![Shared DB Antipattern](https://raw.githubusercontent.com/paulmascarilla/course-example/main/diagrams/02_shared_db_antipattern.svg)
 
-✅ Correct : database per service
-┌──────────┐    ┌──────────┐    ┌──────────┐
-│ service A│    │ service B│    │ service C│
-└────┬─────┘    └────┬─────┘    └────┬─────┘
-┌────▼─────┐  ┌──────▼─────┐  ┌─────▼──────┐
-│ PostgreSQL│  │  MongoDB   │  │   Redis    │
-└──────────┘  └────────────┘  └────────────┘
-```
+![DB per Service](https://raw.githubusercontent.com/paulmascarilla/course-example/main/diagrams/03_db_per_service.svg)
 
 ---
 
@@ -162,7 +136,6 @@ my-service/
 
 Une application microservice cloud-native suit ces principes :
 
-|||callout-blue
 1. **Codebase** — Un repo, plusieurs déploiements
 2. **Dependencies** — Dépendances déclarées explicitement
 3. **Config** — Configuration dans l'environnement
@@ -175,11 +148,10 @@ Une application microservice cloud-native suit ces principes :
 10. **Dev/prod parity** — Environnements similaires
 11. **Logs** — Traités comme des flux d'événements
 12. **Admin processes** — Tâches admin comme des one-offs
-|||
 
 ---
 
-## |||spotlight Ce que vous allez construire dans ce cours|||
+## Ce que vous allez construire dans ce cours
 
 Au fil des modules, vous allez :
 
@@ -189,5 +161,3 @@ Au fil des modules, vous allez :
 4. **Déployer** sur Kubernetes avec les ressources CNCF
 5. **Observer** avec Prometheus, Grafana et Jaeger
 6. **Automatiser** avec CI/CD et GitOps (ArgoCD)
-
-|||rainbow 🎯 Prêt à maîtriser les microservices ? Passons à l'architecture hexagonale ! ➜|||

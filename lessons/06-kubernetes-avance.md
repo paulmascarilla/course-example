@@ -1,4 +1,4 @@
-|||spotlight Les ressources avancées de Kubernetes transforment un simple orchestrateur de conteneurs en plateforme production-grade : routage intelligent, scalabilité automatique, et stockage persistant.|||
+Les ressources avancées de Kubernetes transforment un simple orchestrateur de conteneurs en plateforme production-grade : routage intelligent, scalabilité automatique, et stockage persistant.
 
 ---
 
@@ -6,11 +6,7 @@
 
 Un **Ingress** expose plusieurs Services via un seul point d'entrée HTTP/S avec routage basé sur le path et le hostname.
 
-```
-Internet → [Ingress Controller] → /api/orders → order-service
-                                → /api/users  → user-service
-                                → /api/products → product-service
-```
+![Ingress Routing](https://raw.githubusercontent.com/paulmascarilla/course-example/main/diagrams/08_ingress_routing.svg)
 
 ### Ingress avec NGINX Ingress Controller
 
@@ -383,7 +379,6 @@ spec:
 
 ## Manifests complets pour la production
 
-|||callout-purple
 **Organisation recommandée des manifests :**
 
 ```
@@ -407,7 +402,6 @@ k8s/
 ```
 
 Utilisez **Kustomize** (intégré à kubectl) ou **Helm** pour gérer les différences entre environnements.
-|||
 
 ```bash
 # Appliquer avec Kustomize
@@ -416,7 +410,3 @@ kubectl apply -k k8s/overlays/production/
 # Vérifier l'état de tous les objets
 kubectl get all,ingress,hpa,pdb -n production
 ```
-
----
-
-|||rainbow ⚙️ Votre infrastructure Kubernetes est production-ready. Place à l'écosystème CNCF ! ➜|||

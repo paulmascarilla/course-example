@@ -1,4 +1,4 @@
-|||spotlight Go est le langage de prédilection du cloud-native. Binaires statiques, faible empreinte mémoire, goroutines légères — tout pour les microservices.|||
+Go est le langage de prédilection du cloud-native. Binaires statiques, faible empreinte mémoire, goroutines légères — tout pour les microservices.
 
 ---
 
@@ -605,7 +605,6 @@ TEST_DATABASE_URL=postgres://localhost/orders_test go test -tags integration ./i
 
 ---
 
-|||callout-purple
 **Récapitulatif des conventions Go pour microservices :**
 
 - `internal/` : code privé au service, non importable depuis l'extérieur
@@ -614,6 +613,4 @@ TEST_DATABASE_URL=postgres://localhost/orders_test go test -tags integration ./i
 - Errors wrappées avec `fmt.Errorf("...: %w", err)` pour la traçabilité
 - Context propagé partout pour annulation et timeouts
 - Configuration uniquement via variables d'environnement
-|||
 
-|||rainbow 🦫 Votre microservice Go est structuré. Prochaine étape : le conteneuriser avec Docker ! ➜|||

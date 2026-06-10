@@ -1,4 +1,4 @@
-|||spotlight L'architecture hexagonale, inventée par Alistair Cockburn en 2005, place la logique métier au centre de tout. L'infrastructure devient un détail d'implémentation.|||
+L'architecture hexagonale, inventée par Alistair Cockburn en 2005, place la logique métier au centre de tout. L'infrastructure devient un détail d'implémentation.
 
 ---
 
@@ -6,16 +6,7 @@
 
 Dans une architecture classique en couches, la logique métier **dépend directement de l'infrastructure** :
 
-```
-❌ Architecture en couches classique (dépendances top-down)
-┌──────────────────────────┐
-│     Présentation (HTTP)  │ ← Controller dépend du Service
-├──────────────────────────┤
-│     Logique métier       │ ← Service dépend du Repository
-├──────────────────────────┤
-│     Accès données (SQL)  │ ← Couplage fort avec PostgreSQL
-└──────────────────────────┘
-```
+![Architecture en couches classique](https://raw.githubusercontent.com/paulmascarilla/course-example/main/diagrams/04_layered_architecture.svg)
 
 **Problèmes** :
 - Impossible de tester la logique métier sans démarrer une base de données
@@ -26,25 +17,7 @@ Dans une architecture classique en couches, la logique métier **dépend directe
 
 ## La solution : l'hexagone
 
-```
-✅ Architecture Hexagonale
-
-         [HTTP Client]  [CLI]  [gRPC Client]
-               ↓          ↓         ↓
-        ┌──[PORT IN]──[PORT IN]──[PORT IN]──┐
-        │                                   │
-        │   ╔═══════════════════════════╗   │
-        │   ║                           ║   │
-        │   ║     DOMAINE MÉTIER        ║   │
-        │   ║   (logique pure, pas      ║   │
-        │   ║    d'infrastructure)      ║   │
-        │   ║                           ║   │
-        │   ╚═══════════════════════════╝   │
-        │                                   │
-        └──[PORT OUT]─[PORT OUT]─[PORT OUT]─┘
-               ↓           ↓          ↓
-         [PostgreSQL]   [Redis]    [Kafka]
-```
+![Architecture Hexagonale](https://raw.githubusercontent.com/paulmascarilla/course-example/main/diagrams/05_hexagonal_architecture.svg)
 
 Le domaine ne connaît ni HTTP, ni PostgreSQL, ni Kafka. Il interagit uniquement avec des **ports** (interfaces).
 
@@ -216,19 +189,9 @@ func (h *HTTPAdapter) CreateOrder(w http.ResponseWriter, r *http.Request) {
 
 ## La règle de dépendance
 
-|||callout-yellow
 **Règle fondamentale : les dépendances ne pointent que vers l'intérieur.**
 
-```
-infrastructure → application → domain
-     ↑               ↑
-  connaît        connaît
-  l'application  le domaine
-
-Le domaine NE CONNAÎT PAS l'application.
-L'application NE CONNAÎT PAS l'infrastructure.
-```
-|||
+![Règle de dépendance](https://raw.githubusercontent.com/paulmascarilla/course-example/main/diagrams/06_dependency_rule.svg)
 
 Concrètement en Go : le package `domain` n'importe **aucun** package externe (`database/sql`, `net/http`, etc.). Il ne dépend que de la bibliothèque standard.
 
@@ -363,17 +326,11 @@ order-service/
 
 ## Comparaison avec d'autres architectures
 
-|||callout-green
 | Architecture | Testabilité | Flexibilité infra | Complexité |
 |---|---|---|---|
 | Monolithe en couches | Faible | Faible | Faible |
 | Clean Architecture | Élevée | Élevée | Moyenne |
 | **Hexagonale** | **Élevée** | **Élevée** | **Moyenne** |
 | CQRS + Event Sourcing | Très élevée | Très élevée | Élevée |
-|||
 
 L'architecture hexagonale est souvent présentée comme équivalente à la *Clean Architecture* de Robert Martin — les principes sont identiques, la terminologie diffère légèrement.
-
----
-
-|||rainbow 🔷 Vous maîtrisez maintenant les fondements. Dans le prochain module, on implémente un vrai microservice en Go ! ➜|||
