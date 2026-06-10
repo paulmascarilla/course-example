@@ -51,10 +51,10 @@ svg{background:var(--paper);font-family:"Hanken Grotesk",Inter,Arial,sans-serif;
 <text x="975" y="320" text-anchor="middle" class="label">Manager</text>
 
 <!-- ── Arrows: API Server → Workers ─────────────────────────── -->
-<path id="toW1" d="M200,343 C200,395 305,410 305,440" class="arrow flow" marker-end="url(#arrow)"/>
+<path id="toW1" d="M200,343 C200,395 305,410 305,440" class="arrow flow"/>
 <circle r="7" fill="#1b86f2" class="packet"><animateMotion dur="1.8s" repeatCount="indefinite" rotate="auto"><mpath href="#toW1"/></animateMotion></circle>
 
-<path id="toW2" d="M200,343 C200,395 895,410 895,440" class="arrowOrange flow" marker-end="url(#arrowOrange)"/>
+<path id="toW2" d="M200,343 C200,395 895,410 895,440" class="arrowOrange flow"/>
 <circle r="7" fill="#ff9d18" class="packet"><animateMotion dur="2.2s" repeatCount="indefinite" rotate="auto"><mpath href="#toW2"/></animateMotion></circle>
 
 <!-- DATA PLANE label -->

@@ -37,13 +37,13 @@ svg{background:var(--paper);font-family:"Hanken Grotesk",Inter,Arial,sans-serif;
 <text x="945" y="303" text-anchor="middle" class="small">service boundary</text>
 
 <!-- Converging arrows -->
-<path id="p0" d="M245,350 C245,430 560,430 560,490" fill="none" stroke="#e5534b" stroke-width="2.5" stroke-dasharray="8 14" marker-end="url(#arrowBad)"/>
+<path id="p0" d="M245,350 C245,430 560,430 560,490" fill="none" stroke="#e5534b" stroke-width="2.5" stroke-dasharray="8 14"/>
 <circle r="8" fill="#ff9d18" class="packet"><animateMotion dur="2.2s" repeatCount="indefinite" rotate="auto"><mpath href="#p0"/></animateMotion></circle>
 
-<path id="p1" d="M595,350 L595,490" fill="none" stroke="#e5534b" stroke-width="2.5" stroke-dasharray="8 14" marker-end="url(#arrowBad)"/>
+<path id="p1" d="M595,350 L595,490" fill="none" stroke="#e5534b" stroke-width="2.5" stroke-dasharray="8 14"/>
 <circle r="8" fill="#ff9d18" class="packet"><animateMotion dur="2.2s" repeatCount="indefinite" rotate="auto"><mpath href="#p1"/></animateMotion></circle>
 
-<path id="p2" d="M945,350 C945,430 630,430 630,490" fill="none" stroke="#e5534b" stroke-width="2.5" stroke-dasharray="8 14" marker-end="url(#arrowBad)"/>
+<path id="p2" d="M945,350 C945,430 630,430 630,490" fill="none" stroke="#e5534b" stroke-width="2.5" stroke-dasharray="8 14"/>
 <circle r="8" fill="#ff9d18" class="packet"><animateMotion dur="2.2s" repeatCount="indefinite" rotate="auto"><mpath href="#p2"/></animateMotion></circle>
 
 <!-- Shared DB card -->

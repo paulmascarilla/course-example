@@ -41,13 +41,13 @@ svg{background:var(--paper);font-family:"Hanken Grotesk",Inter,Arial,sans-serif;
 <text x="950" y="293" text-anchor="middle" class="small">Billing API</text>
 
 <!-- Arrows to DB cards -->
-<path id="a0" d="M250,330 L250,410" fill="none" stroke="#1b86f2" stroke-width="2.5" stroke-dasharray="8 14" marker-end="url(#arrowBlue)"/>
+<path id="a0" d="M250,330 L250,410" fill="none" stroke="#1b86f2" stroke-width="2.5" stroke-dasharray="8 14"/>
 <circle r="8" fill="#1b86f2" class="packet"><animateMotion dur="1.8s" repeatCount="indefinite" rotate="auto"><mpath href="#a0"/></animateMotion></circle>
 
-<path id="a1" d="M600,330 L600,410" fill="none" stroke="#3bb273" stroke-width="2.5" stroke-dasharray="8 14" marker-end="url(#arrowGreen)"/>
+<path id="a1" d="M600,330 L600,410" fill="none" stroke="#3bb273" stroke-width="2.5" stroke-dasharray="8 14"/>
 <circle r="8" fill="#3bb273" class="packet"><animateMotion dur="1.8s" repeatCount="indefinite" rotate="auto"><mpath href="#a1"/></animateMotion></circle>
 
-<path id="a2" d="M950,330 L950,410" fill="none" stroke="#ff9d18" stroke-width="2.5" stroke-dasharray="8 14" marker-end="url(#arrowOrange)"/>
+<path id="a2" d="M950,330 L950,410" fill="none" stroke="#ff9d18" stroke-width="2.5" stroke-dasharray="8 14"/>
 <circle r="8" fill="#ff9d18" class="packet"><animateMotion dur="1.8s" repeatCount="indefinite" rotate="auto"><mpath href="#a2"/></animateMotion></circle>
 
 <!-- PostgreSQL DB card (blue) -->
