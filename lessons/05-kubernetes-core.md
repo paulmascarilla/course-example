@@ -4,28 +4,7 @@ Kubernetes orchestre vos conteneurs à grande échelle : placement, scalabilité
 
 ## Architecture de Kubernetes
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                      CONTROL PLANE                          │
-│                                                             │
-│  ┌─────────────┐  ┌──────────┐  ┌───────┐  ┌───────────┐  │
-│  │ API Server  │  │   etcd   │  │Sched- │  │Controller │  │
-│  │ (kube-api)  │  │(key-val) │  │ uler  │  │  Manager  │  │
-│  └─────────────┘  └──────────┘  └───────┘  └───────────┘  │
-└─────────────────────────────────────────────────────────────┘
-           │                          │
-    ┌──────▼──────────────────────────▼──────┐
-    │              DATA PLANE                 │
-    │                                         │
-    │  ┌──────────────┐   ┌──────────────┐   │
-    │  │   Worker 1   │   │   Worker 2   │   │
-    │  │  ┌────────┐  │   │  ┌────────┐  │   │
-    │  │  │ kubelet│  │   │  │ kubelet│  │   │
-    │  │  │kube-px │  │   │  │kube-px │  │   │
-    │  │  │[Pod][Pod]  │   │  │[Pod]   │   │
-    │  └──────────────┘   └──────────────┘   │
-    └─────────────────────────────────────────┘
-```
+![Architecture Kubernetes](https://raw.githubusercontent.com/paulmascarilla/course-example/main/diagrams/07_kubernetes_architecture.svg)
 
 **Composants clés :**
 - **API Server** : point d'entrée, valide et persiste les objets dans etcd
