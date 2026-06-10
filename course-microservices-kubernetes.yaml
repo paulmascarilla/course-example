@@ -21,6 +21,13 @@ spec:
     ref: main
     path: lessons/01-introduction-microservices.md
 
+  - name: "Quiz — Introduction aux Microservices"
+    type: quiz
+    src: https://github.com/paulmascarilla/course-example
+    ref: main
+    path: quizzes/microservices-intro.yaml
+    inline: true
+
   - name: "Architecture Hexagonale (Ports & Adapters)"
     type: text
     src: https://github.com/paulmascarilla/course-example

@@ -1,0 +1,74 @@
+id: microservices-intro
+title: "Quiz — Introduction aux Microservices"
+description: "Vérifiez votre compréhension des principes fondamentaux des microservices : bounded contexts, patterns essentiels et communication entre services."
+version: "1.0.0"
+covers:
+  - course: microservices-kubernetes
+    modules:
+      - "Introduction aux Microservices"
+passing_score: 70
+cooldown:
+  strategy: exponential
+  base_seconds: 30
+  multiplier: 2.0
+  max_seconds: 600
+max_attempts_per_question: 5
+lock_on_max_attempts: false
+questions:
+
+  - id: q1
+    type: single
+    difficulty: easy
+    points: 1
+    question: |
+      Quel est le rôle principal d'un API Gateway dans une architecture microservices ?
+    answers:
+      - id: a
+        text: "Remplacer la base de données des services"
+        correct: false
+      - id: b
+        text: "Servir de point d'entrée unique en gérant le routage, l'authentification et le rate limiting"
+        correct: true
+      - id: c
+        text: "Synchroniser les événements entre services via Kafka"
+        correct: false
+      - id: d
+        text: "Déployer automatiquement les services sur Kubernetes"
+        correct: false
+    feedback:
+      wrong: "L'API Gateway est le point d'entrée unique de l'architecture : il route les requêtes vers les bons services et centralise les préoccupations transverses (auth, rate limiting)."
+      correct: "Exact ! Le gateway évite que les clients connaissent la topologie interne des services."
+
+  - id: q2
+    type: single
+    difficulty: easy
+    points: 1
+    question: |
+      Quel est le principal problème d'une base de données partagée entre plusieurs microservices ?
+    answers:
+      - id: a
+        text: "Elle est trop lente pour supporter plusieurs services"
+        correct: false
+      - id: b
+        text: "Elle crée un couplage fort qui empêche les déploiements et migrations indépendants"
+        correct: true
+      - id: c
+        text: "Elle ne supporte pas les transactions"
+        correct: false
+      - id: d
+        text: "Elle consomme trop de mémoire"
+        correct: false
+    feedback:
+      wrong: "Le vrai problème est le couplage : une migration de schéma dans un service peut casser les autres. Les services ne peuvent plus évoluer indépendamment."
+      correct: "Exact ! La base partagée est l'anti-pattern n°1 des microservices — elle annule le principal bénéfice de l'architecture."
+
+  - id: q3
+    type: boolean
+    difficulty: easy
+    points: 1
+    question: |
+      Dans une architecture Event-Driven, le service `order-service` doit connaître l'adresse de tous ses consommateurs pour publier un événement `OrderCreated`.
+    correct_answer: false
+    feedback:
+      wrong: "C'est l'inverse — le producteur publie dans le bus sans connaître ses consommateurs. C'est précisément ce découplage qui donne sa valeur à l'Event-Driven."
+      correct: "Correct ! Le producteur ne connaît que le bus de messages. Les consommateurs s'y abonnent indépendamment — ajouter un nouveau consommateur ne nécessite aucune modification du producteur."
