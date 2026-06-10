@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 165 1200 595" width="1200" height="595" role="img" aria-label="Schema 1 — Bounded Contexts">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="66 226 1048 228" width="1200" height="261" role="img" aria-label="Schema 1 — Bounded Contexts">
 <style>
 :root{--ink:#2b2f36;--ink-soft:#6b7280;--line:#e2e6ef;--fill:#f3f5f9;--paper:#fff;--blue:#1b86f2;--blue-deep:#1466c4;--blue-soft:#e2f0fd;--orange:#ff9d18;--good:#3bb273;--bad:#e5534b}
 svg{background:var(--paper);font-family:"Hanken Grotesk",Inter,Arial,sans-serif;color:var(--ink)}
