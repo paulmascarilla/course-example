@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 -16 1120 550" width="1200" height="589" role="img" aria-label="Schema 3 — DB per service (✅)">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 -61 1120 595" width="1200" height="637" role="img" aria-label="Schema 3 — DB per service (✅)">
 <style>
 :root{--ink:#2b2f36;--ink-soft:#6b7280;--line:#e2e6ef;--fill:#f3f5f9;--paper:#fff;--blue:#1b86f2;--blue-deep:#1466c4;--blue-soft:#e2f0fd;--orange:#ff9d18;--good:#3bb273;--bad:#e5534b}
 svg{background:var(--paper);font-family:"Hanken Grotesk",Inter,Arial,sans-serif;color:var(--ink)}
@@ -21,6 +21,7 @@ svg{background:var(--paper);font-family:"Hanken Grotesk",Inter,Arial,sans-serif;
 
 
 </defs>
+<text x="554" y="-33" text-anchor="middle" font-size="14" fill="#6b7280" font-style="italic">DB par service — chaque service choisit librement sa technologie de stockage</text>
 
 <!-- user-service -->
 <rect x="110" y="205" width="280" height="125" rx="20" filter="url(#shadow)" fill="#fff" stroke="#e2e6ef" stroke-width="2"/>

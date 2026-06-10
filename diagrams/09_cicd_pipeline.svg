@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="91 276 1063 233" width="1200" height="263" role="img" aria-label="Schema 9 — CI/CD pipeline">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="91 231 1063 278" width="1200" height="314" role="img" aria-label="Schema 9 — CI/CD pipeline">
 <style>
 :root{--ink:#2b2f36;--ink-soft:#6b7280;--line:#e2e6ef;--fill:#f3f5f9;--paper:#fff;--blue:#1b86f2;--blue-deep:#1466c4;--blue-soft:#e2f0fd;--orange:#ff9d18;--good:#3bb273;--bad:#e5534b}
 svg{background:var(--paper);font-family:"Hanken Grotesk",Inter,Arial,sans-serif;color:var(--ink)}
@@ -21,6 +21,7 @@ svg{background:var(--paper);font-family:"Hanken Grotesk",Inter,Arial,sans-serif;
 
 
 </defs>
+<text x="622" y="259" text-anchor="middle" font-size="14" fill="#6b7280" font-style="italic">Pipeline CI/CD — Commit → Tests → Build → Registry → Déploiement automatisé</text>
 
 <rect x="115" y="300" width="205" height="130" rx="22" class="box"/><text x="217" y="357" text-anchor="middle" class="label">Commit</text><text x="217" y="485" text-anchor="middle" class="code">Git</text><path id="ci0" d="M320,365 C348,320 357,410 385,365" class="arrowGood flow"/><circle r="7" fill="#3bb273" class="packet"><animateMotion dur="1.2s" repeatCount="indefinite" rotate="auto"><mpath href="#ci0"/></animateMotion></circle><rect x="385" y="300" width="205" height="130" rx="22" class="box"/><text x="487" y="357" text-anchor="middle" class="label">CI</text><text x="487" y="485" text-anchor="middle" class="code">GitHub Actions
 test + build</text><path id="ci1" d="M590,365 C618,320 627,410 655,365" class="arrowGood flow"/><circle r="7" fill="#3bb273" class="packet"><animateMotion dur="1.2s" repeatCount="indefinite" rotate="auto"><mpath href="#ci1"/></animateMotion></circle><rect x="655" y="300" width="205" height="130" rx="22" class="box"/><text x="757" y="357" text-anchor="middle" class="label">Registry</text><text x="757" y="485" text-anchor="middle" class="code">ghcr.io</text><path id="ci2" d="M860,365 C888,320 897,410 925,365" class="arrowGood flow"/><circle r="7" fill="#3bb273" class="packet"><animateMotion dur="1.2s" repeatCount="indefinite" rotate="auto"><mpath href="#ci2"/></animateMotion></circle><rect x="925" y="300" width="205" height="130" rx="22" class="box"/><text x="1027" y="357" text-anchor="middle" class="label">CD</text><text x="1027" y="485" text-anchor="middle" class="code">ArgoCD
