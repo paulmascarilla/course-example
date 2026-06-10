@@ -48,7 +48,9 @@ Chaque service fait **une seule chose, et la fait bien**. Un service `user-servi
 
 ### 2. Bounded Context (DDD)
 
-Le **Domain-Driven Design** introduit la notion de *Bounded Context* : chaque service a son propre vocabulaire et modèle de données, même si deux services parlent d'un "utilisateur", leur représentation peut différer.
+Le **Domain-Driven Design** introduit la notion de *Bounded Context* : chaque service a son propre vocabulaire et modèle de données. Même si deux services parlent d'un "utilisateur", leur représentation diffère — le `user-service` y voit un profil avec mot de passe, le `billing-service` une entité avec IBAN.
+
+Dans le schéma ci-dessous, chaque service possède ses propres entités métier sans partager de modèle commun :
 
 ![Bounded Contexts](https://raw.githubusercontent.com/paulmascarilla/course-example/main/diagrams/01_bounded_contexts.svg)
 
@@ -63,7 +65,11 @@ Dans un système distribué, **les pannes sont inévitables**. Chaque service do
 
 ### 4. Decentralized Data Management
 
+L'anti-pattern le plus courant est la **base de données partagée** : tous les services lisent et écrivent dans le même schéma. Résultat — une migration dans un service peut casser les autres, et il est impossible de déployer indépendamment.
+
 ![Shared DB Antipattern](https://raw.githubusercontent.com/paulmascarilla/course-example/main/diagrams/02_shared_db_antipattern.svg)
+
+La solution est de donner à chaque service **sa propre base de données**. Les services ne se parlent plus via la DB — uniquement via leurs APIs. En bonus, chaque service peut choisir la technologie la mieux adaptée à son usage (relationnel, document, cache…) :
 
 ![DB per Service](https://raw.githubusercontent.com/paulmascarilla/course-example/main/diagrams/03_db_per_service.svg)
 
@@ -73,37 +79,24 @@ Dans un système distribué, **les pannes sont inévitables**. Chaque service do
 
 ### API Gateway
 
-Point d'entrée unique pour tous les clients. Il gère :
+Dans une architecture microservices, les clients ne s'adressent pas directement aux services internes. Un **API Gateway** sert de point d'entrée unique : il reçoit toutes les requêtes et les route vers le bon service selon le chemin URL. Il prend aussi en charge l'authentification, le rate limiting et l'agrégation de réponses.
 
-- **Routage** vers les services appropriés
-- **Authentification** et autorisation centralisées
-- **Rate limiting** et throttling
-- **Aggregation** de réponses multi-services
-
-```bash
-Client → API Gateway → user-service
-                    → order-service
-                    → product-service
-```
+![API Gateway](https://raw.githubusercontent.com/paulmascarilla/course-example/main/diagrams/12_api_gateway.svg)
 
 ### Service Discovery
 
-Comment les services se trouvent-ils dans un environnement dynamique (Kubernetes) ?
+Comment les services se trouvent-ils dans un environnement dynamique où les pods démarrent et s'arrêtent en permanence ?
 
 - **DNS-based** : Kubernetes expose chaque Service via DNS (`user-service.default.svc.cluster.local`)
-- **Registry** : Consul, etcd stockent les adresses des instances
+- **Registry** : Consul, etcd stockent les adresses des instances actives
 
 ### Event-Driven Architecture
 
-Au lieu d'appels synchrones, les services publient des **événements** :
+Dans les architectures synchrones, un appel bloquant entre `order-service` et `billing-service` crée un couplage fort : si `billing-service` est lent, tout le pipeline est ralenti. La solution est d'adopter la communication **asynchrone par événements** : un service publie un événement dans un bus de messages, et les consommateurs s'y abonnent indépendamment.
 
-```
-order-service publie → OrderCreated → billing-service consomme
-                                    → notification-service consomme
-                                    → inventory-service consomme
-```
+![Event-Driven Architecture](https://raw.githubusercontent.com/paulmascarilla/course-example/main/diagrams/13_event_driven.svg)
 
-Outils : Kafka, NATS, RabbitMQ, Pulsar
+Un seul événement `OrderCreated` déclenche ainsi la facturation, la notification et la mise à jour du stock — sans que `order-service` ne connaisse ses consommateurs. Outils courants : Kafka, NATS, RabbitMQ, Pulsar.
 
 ---
 
