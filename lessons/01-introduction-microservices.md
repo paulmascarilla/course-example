@@ -125,25 +125,6 @@ my-service/
 
 ---
 
-## Les 12 facteurs (12-Factor App)
-
-Une application microservice cloud-native suit ces principes :
-
-1. **Codebase** — Un repo, plusieurs déploiements
-2. **Dependencies** — Dépendances déclarées explicitement
-3. **Config** — Configuration dans l'environnement
-4. **Backing services** — DB, cache = ressources attachées
-5. **Build, release, run** — Étapes strictement séparées
-6. **Processes** — Exécution en processus stateless
-7. **Port binding** — Export des services via ports
-8. **Concurrency** — Scalabilité par multiplication de processus
-9. **Disposability** — Démarrage rapide, arrêt gracieux
-10. **Dev/prod parity** — Environnements similaires
-11. **Logs** — Traités comme des flux d'événements
-12. **Admin processes** — Tâches admin comme des one-offs
-
----
-
 ## Ce que vous allez construire dans ce cours
 
 Au fil des modules, vous allez :
