@@ -1,14 +1,13 @@
 id: microservices-hexagonal
-title: "Quiz — Microservices & Architecture Hexagonale"
-description: "Testez votre compréhension des microservices, de l'architecture hexagonale (Ports & Adapters) et de l'implémentation Go."
-version: "1.0.0"
+title: "Quiz — Architecture Hexagonale"
+description: "Testez votre compréhension de l'architecture hexagonale (Ports & Adapters) et de son implémentation en Go."
+version: "1.1.0"
 covers:
   - course: microservices-kubernetes
     modules:
       - "Introduction aux Microservices"
-      - "Architecture Hexagonale"
-      - "Implémenter un Microservice en Go"
-passing_score: 75
+      - "Architecture Hexagonale (Ports & Adapters)"
+passing_score: 70
 cooldown:
   strategy: exponential
   base_seconds: 30
@@ -40,11 +39,6 @@ questions:
     feedback:
       wrong: "La logique métier est dans le domaine, au cœur de l'hexagone — pas dans HTTP ni en base."
       correct: "Exact ! Le domaine est au centre, indépendant de toute infrastructure."
-      source_refs:
-        - course: microservices-kubernetes
-          module: "Architecture Hexagonale"
-          anchor: hexagone
-          priority: 1
 
   - id: q2
     type: single
@@ -60,10 +54,10 @@ questions:
         text: "Une interface Go définissant comment le domaine interagit avec l'extérieur"
         correct: true
       - id: c
-        text: "Une variable d'environnement"
+        text: "Un package Go externe"
         correct: false
       - id: d
-        text: "Un package Go externe"
+        text: "Une variable d'environnement"
         correct: false
     feedback:
       wrong: "Un Port hexagonal est une interface (contrat), pas un port réseau."
@@ -74,40 +68,13 @@ questions:
     difficulty: easy
     points: 1
     question: |
-      Le package `domain` d'un microservice hexagonal peut importer `database/sql`
-      pour interagir directement avec la base de données.
+      Le package `domain` peut importer `database/sql` pour interagir directement avec la base de données.
     correct_answer: false
     feedback:
-      wrong: |
-        Le domaine ne doit jamais importer de packages d'infrastructure (SQL, HTTP, Kafka).
-        Il interagit uniquement via des interfaces (ports).
+      wrong: "Le domaine ne doit jamais importer de packages d'infrastructure. Il interagit uniquement via des interfaces (ports)."
       correct: "Correct ! Le domaine est pur — sans dépendances externes. La règle de dépendance va vers l'intérieur."
 
   - id: q4
-    type: single
-    difficulty: medium
-    points: 2
-    question: |
-      Dans quel fichier Go assemble-t-on les couches (domain, application, infrastructure)
-      par injection de dépendances ?
-    answers:
-      - id: a
-        text: "internal/domain/ports.go"
-        correct: false
-      - id: b
-        text: "internal/application/service.go"
-        correct: false
-      - id: c
-        text: "cmd/server/main.go"
-        correct: true
-      - id: d
-        text: "internal/infrastructure/postgres/repository.go"
-        correct: false
-    feedback:
-      wrong: "L'injection de dépendances se fait dans le 'composition root' : cmd/server/main.go."
-      correct: "Exact ! Le main.go est le seul endroit qui connaît toutes les couches et les assemble."
-
-  - id: q5
     type: multiple
     difficulty: medium
     points: 2
@@ -121,7 +88,7 @@ questions:
         text: "Les tests sont automatiquement générés"
         correct: false
       - id: c
-        text: "On peut remplacer PostgreSQL par un repository en mémoire pour les tests"
+        text: "On peut remplacer PostgreSQL par un repository en mémoire"
         correct: true
       - id: d
         text: "On n'a plus besoin d'écrire de tests"
@@ -133,112 +100,22 @@ questions:
       wrong: "Les ports (interfaces) permettent d'injecter des faux adaptateurs (in-memory) pour tester sans infra."
       correct: "Exact ! La testabilité est l'un des principaux bénéfices de l'architecture hexagonale."
 
-  - id: q6
-    type: single
-    difficulty: medium
-    points: 2
-    question: |
-      Quel est le rôle d'un "Adaptateur" dans l'architecture hexagonale ?
-    answers:
-      - id: a
-        text: "Définir les règles métier du domaine"
-        correct: false
-      - id: b
-        text: "Implémenter un port avec une technologie concrète (PostgreSQL, HTTP, Kafka…)"
-        correct: true
-      - id: c
-        text: "Orchestrer les use cases applicatifs"
-        correct: false
-      - id: d
-        text: "Gérer les secrets Kubernetes"
-        correct: false
-    feedback:
-      wrong: "Les adaptateurs sont les implémentations concrètes des ports — la couche infrastructure."
-      correct: "Exact ! Un adaptateur PostgreSQL implémente l'interface OrderRepository définie dans le domaine."
-
-  - id: q7
-    type: boolean
-    difficulty: medium
-    points: 2
-    question: |
-      Le pattern "database per service" signifie que chaque microservice
-      doit avoir sa propre base de données, inaccessible aux autres services.
-    correct_answer: true
-    feedback:
-      wrong: |
-        C'est bien le principe ! Partager une base entre services crée un couplage fort
-        et empêche le déploiement indépendant.
-      correct: "Exact ! Chaque service possède son schéma de données, garantissant l'autonomie et le découplage."
-
-  - id: q8
-    type: single
-    difficulty: hard
-    points: 3
-    question: |
-      Un service Go démarre en quelques millisecondes mais se plante après 10 secondes
-      car la base de données n'est pas prête. Quelle probe Kubernetes corriger ?
-    answers:
-      - id: a
-        text: "livenessProbe — elle redémarre le Pod trop tôt"
-        correct: false
-      - id: b
-        text: "readinessProbe — elle indique si le Pod peut recevoir du trafic"
-        correct: true
-      - id: c
-        text: "startupProbe — elle bloque le démarrage trop longtemps"
-        correct: false
-      - id: d
-        text: "resourceProbe — les limits CPU sont trop basses"
-        correct: false
-    feedback:
-      wrong: |
-        La readinessProbe contrôle si le Pod doit recevoir du trafic. Si la DB n'est pas prête,
-        /readyz doit retourner 503 pour que Kubernetes retire le Pod du load balancer.
-      correct: "Exact ! /readyz = est-ce que je peux servir du trafic ? Retourner 503 si la DB n'est pas disponible."
-
-  - id: q9
+  - id: q5
     type: order
-    difficulty: hard
-    points: 3
+    difficulty: medium
+    points: 2
     question: |
-      Remettez dans l'ordre les couches de l'architecture hexagonale,
-      de la plus externe vers la plus interne.
+      Remettez dans l'ordre les couches de l'architecture hexagonale, de la plus externe vers la plus interne.
     items:
       - id: i1
         text: "Infrastructure (PostgreSQL, HTTP, Kafka)"
       - id: i2
         text: "Application (Use Cases)"
       - id: i3
-        text: "Domaine (entités, règles métier)"
-      - id: i4
         text: "Ports (interfaces)"
-    correct_order: [i1, i2, i4, i3]
+      - id: i4
+        text: "Domaine (entités, règles métier)"
+    correct_order: [i1, i2, i3, i4]
     feedback:
       wrong: "De l'extérieur vers l'intérieur : Infrastructure → Application → Ports → Domaine."
-      correct: "Parfait ! Les dépendances vont toujours de l'extérieur vers le centre (la règle de dépendance)."
-
-  - id: q10
-    type: multiple
-    difficulty: hard
-    points: 3
-    question: |
-      Quelles pratiques respectent la règle des 12 facteurs (12-Factor App) ?
-    answers:
-      - id: a
-        text: "Stocker les credentials dans les variables d'environnement"
-        correct: true
-      - id: b
-        text: "Committer le fichier .env avec les secrets dans Git"
-        correct: false
-      - id: c
-        text: "Logger sur stdout/stderr (pas dans des fichiers)"
-        correct: true
-      - id: d
-        text: "Stocker l'état des sessions en mémoire du processus"
-        correct: false
-    partial_scoring:
-      enabled: true
-      allow_negative: false
-    feedback:
-      wrong: "Config en env vars + logs sur stdout = 12-Factor. Jamais de secrets dans Git, jamais d'état en mémoire."
-      correct: "Exact ! Ces deux pratiques sont fondamentales pour les applications cloud-native."
+      correct: "Parfait ! Les dépendances vont toujours de l'extérieur vers le centre."
